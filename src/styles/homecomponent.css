@@ -1,0 +1,66 @@
+*{
+    font-family: 'Roboto';
+}
+.bgcontainer{
+    height: 100vh;
+    background-image: url('https://img.freepik.com/free-photo/nature-colorful-landscape-dusk-cloud_1203-5705.jpg?size=626&ext=jpg&ga=GA1.1.2072520545.1676268295&semt=sph');
+    background-repeat: no-repeat;
+    background-size: 100% 100vh ;
+}
+
+.mainContainer{
+    /* background-color: rgba(128, 255, 0, 0.295); */
+    display: flex;
+    /* justify-content:  */
+    justify-content: space-between;
+}
+
+.right{
+    width: 30%;
+    /* border-radius: 20px;  */
+    background-color: rgba(0, 0, 0, 0.10);
+    height: 100vh;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px 0;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 40px 0;
+}
+
+.cityName{
+    display: flex;
+    justify-content: center;
+}
+.data{
+
+    display: flex;
+    margin: 2rem 5rem 2rem 5rem;
+    justify-content: space-around;
+}
+.icon{
+    display: flex;
+    align-items: center;
+}
+.icon>p{
+    margin-left: 1rem;
+}
+.dateTImeBottom{
+    background-color: aqua;
+    display: flex;
+    margin-top: 80vh;
+    align-items: center;
+}
+
+.cityname{
+    background-color: aquamarine;
+    float: right;
+
+    /* display: flex; */
+}
+
+

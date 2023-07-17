@@ -4,8 +4,8 @@ import HomeComponent from "./components/HomeComponent";
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
-      <HomeComponent />
+      <Home />
+      {/* <HomeComponent /> */}
     </div>
   );
 }

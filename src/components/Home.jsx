@@ -9,24 +9,26 @@ import AirIcon from "@mui/icons-material/Air";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import "../styles/homecomponent.css";
 import { TextField } from "@mui/material";
-
-// const cityName = "lucknow";
+import { Button } from "@mui/material";
 
 const Home = () => {
-  const [search, setSearch] = useState("lucknow");
   const [city, setCity] = useState(null);
-  console.log(search);
+  const [search, setSearch] = useState("lucknow");
+  const [typedCity, setTypedCity] = useState("");
+  const setTypedSearch = () => {
+    setSearch(typedCity);
+  };
 
   useEffect(() => {
     try {
       const fetchedData = async () => {
         const { data } = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${key}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${key}&units=metric
+          `
         );
         console.log(data);
-        setCity(data.main);
+        setCity(data);
       };
-      // console.log("city", city);
       fetchedData();
     } catch (error) {
       console.log(error);
@@ -43,17 +45,14 @@ const Home = () => {
             <div className="mainContainer">
               <div className="leftContainer">
                 <div className="cityname">
-                  <h1>Lucknow</h1>
-                  <p>IN</p>
+                  <h1>{city.name}</h1>
+                  <p>{city.sys.country}</p>
                 </div>
                 <div className="dateTImeBottom">
-                  <div className="date">
-                    <h3>01:59:01</h3>
-                    <p>Mondty, 19 May 2023</p>
-                  </div>
                   <div className="temprature">
                     <h1>
-                      45<span>°</span>
+                      {city.main.temp}
+                      <span>°C</span>
                     </h1>
                   </div>
                 </div>
@@ -64,16 +63,17 @@ const Home = () => {
                   <div className="logo">
                     <CloudQueueIcon sx={{ fontSize: 90 }} color="white" />
                   </div>
-                  <h1 style={{ textAlign: "center", color: "white" }}>Haze</h1>
+                  <h1 style={{ textAlign: "center", color: "white" }}>
+                    {city.weather[0].main}
+                  </h1>
                   <div className="input">
                     <TextField
                       id="standard-basic"
                       label="Search any City"
                       variant="standard"
-                      onChange={(event) => {
-                        setSearch(event.target.value);
-                      }}
+                      onChange={(event) => setTypedCity(event.target.value)}
                     />
+                    <Button onClick={setTypedSearch}>Search</Button>
                   </div>
                   <div className="cityName">
                     <p>{city.name}</p>
@@ -83,28 +83,28 @@ const Home = () => {
                       <DeviceThermostatIcon />
                       <p>Temperature</p>
                     </div>
-                    <p>{city.temp}</p>
+                    <p>{city.main.temp}°C</p>
                   </div>
                   <div className="data">
                     <div className="icon">
                       <WaterDropIcon />
                       <p>Humidity</p>
                     </div>
-                    <p>32</p>
+                    <p>{city.main.humidity}</p>
                   </div>
                   <div className="data">
                     <div className="icon">
                       <VisibilityIcon />
                       <p>Visibility</p>
                     </div>
-                    <p>32C</p>
+                    <p>{city.visibility}</p>
                   </div>
                   <div className="data">
                     <div className="icon">
                       <AirIcon />
                       <p>wind Speed</p>
                     </div>
-                    <p>32C</p>
+                    <p>{city.wind.speed}</p>
                   </div>
                 </div>
               </div>

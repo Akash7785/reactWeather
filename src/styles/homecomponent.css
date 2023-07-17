@@ -53,14 +53,13 @@
     background-color: aqua;
     display: flex;
     margin-top: 80vh;
-    align-items: center;
+
 }
 
 .cityname{
     background-color: aquamarine;
-    float: right;
+    /* margin:50% */
 
-    /* display: flex; */
 }
 
 
